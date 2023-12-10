@@ -1,7 +1,7 @@
 #include  <stdio.h> //Biblioteca de comunicação com o usuário
 #include <stdlib.h> //Biblioteca de alocação de espaço de memória
 #include <locale.h> //Biblioteca de alocações de texto por região
-#include <string.h> //Biblioteca responsável de cuidar dass String
+#include <string.h> //Biblioteca responsável de cuidar das String
 
 int registrar()
 {
@@ -143,6 +143,7 @@ int main() {
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
 		printf("\t3 - Deletar nomes\n");
+		printf("\t4 - Sair do sistema\n");
 		printf("\n\tOpção: "); //fim do menu principal
 		scanf("%d", &opcao); //armazenamento da escolha do usuário
 		system("cls"); //limpar a tela
@@ -159,6 +160,11 @@ int main() {
 				
 			case 3:
 				deletar();
+				break;
+				
+			case 4:
+				printf("\nObrigado por utilizar nosso sistema!\n");
+				return 0;
 				break;
 			
 			default:
