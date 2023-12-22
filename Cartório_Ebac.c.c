@@ -126,22 +126,22 @@ int deletar()
 		printf("\nDigite o CPF do usuário a ser apagado: ");
 		scanf("%s", cpf);
 		
-		FILE *file;
-		file = fopen(cpf,"r");
+		FILE *file; //FILE é a biblioteca e file é para abrir a funcão file
+		file = fopen(cpf,"r");// "r" é para procurar nos arquivos se tem algum com esse nome(CPF)
 	
-		if(file == NULL)
+		if(file == NULL) //casso não ache nenhum arquivo com esse nome(CPF)
 		{
 			printf("\nEste usuário do CPF: %s, NÃO EXISTE\n\n",cpf);
 			system("pause");
 		}
-		else
+		else //Quando achar um arquivo com esse nome(CPF)
 		{
 			printf("\nFoi apagado o usuário do CPF: %s\n\n", cpf);
 			system("pause");
 		}
-		fclose(file);
+		fclose(file); //fecha a função file
 		
-		remove(cpf);
+		remove(cpf);// Deleta o arquivo com o nome do CPF
 		
 		system("cls");
 		printf("\nDeseja continuar? Tecle: 1 \nDeseja parar? Tecle: 2\n--> ");
@@ -156,44 +156,61 @@ int main() {
 	setlocale(LC_ALL, "Portuguese");//definindo a linguagem
 	
 	int opcao=0, cont=0; 	//definindo variaveis 
+		int x, y;
+	char nomeUsuario[10];//nome de usuário = admin
+	char senha[10];//senha = 123456
 	
+	printf("\nDigite seu nome de usuário: ");
+	scanf("%s", nomeUsuario);
+	printf("\nDigite sua senha: ");
+	scanf("%s", senha);
 	
-	for (cont = 1 ; cont = 1;)
-	{
-		system("cls");
-		printf("   ## CARTÓRIO DA EBAC ##\n\n"); //inicio do menu principal
-		printf("Escolha a opção desejada do menu:\n\n");
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n");
-		printf("\t4 - Sair do sistema\n");
-		printf("\n\tOpção: "); //fim do menu principal
-		scanf("%d", &opcao); //armazenamento da escolha do usuário
-		system("cls"); //limpar a tela
+	x = strcmp (nomeUsuario, "admin");//compara a string nomeUsuário com "admin", se correto (x = 0) 
+	y = strcmp (senha, "123456");//compara a string senha com "123456", se correto (y = 0)
 		
-		switch (opcao) //inicio da impressão da escolha do usuário
+	if(x==0 && y==0) //se x for igual a "0" e y for igual a "0", faça 
+
+	{
+	
+		for (cont = 1 ; cont = 1;)
 		{
-			case 1:
-				registrar();
-				break;
+			system("cls");
+			printf("   ## CARTÓRIO DA EBAC ##\n\n"); //inicio do menu principal
+			printf("Escolha a opção desejada do menu:\n\n");
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar nomes\n");
+			printf("\t3 - Deletar nomes\n");
+			printf("\t4 - Sair do sistema\n");
+			printf("\n\tOpção: "); //fim do menu principal
+			scanf("%d", &opcao); //armazenamento da escolha do usuário
+			system("cls"); //limpar a tela
 			
-			case 2:
-				consultar();
-				break;
+			switch (opcao) //inicio da impressão da escolha do usuário
+			{
+				case 1:
+					registrar();
+					break;
 				
-			case 3:
-				deletar();
-				break;
+				case 2:
+					consultar();
+					break;
+					
+				case 3:
+					deletar();
+					break;
+					
+				case 4:
+					printf("\nObrigado por utilizar nosso sistema!\n");
+					return 0;
+					break;
 				
-			case 4:
-				printf("\nObrigado por utilizar nosso sistema!\n");
-				return 0;
-				break;
-			
-			default:
-				printf("\nOpção indisponível!!\nEscolha uma opção de 1 a 3\n");
-				system("pause");
-				break;				
-		}	//Final da impressão da escolha do usuário
+				default:
+					printf("\nOpção indisponível!!\nEscolha uma opção de 1 a 3\n");
+					system("pause");
+					break;				
+			}	//Final da impressão da escolha do usuário
+		}
+	}else{ 	//se "x" ou "y" for diferente de "0"
+		printf("\nNome de usuário ou senha incorreta");
 	}
 }
